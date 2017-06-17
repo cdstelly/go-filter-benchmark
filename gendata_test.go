@@ -14,7 +14,6 @@ var (
 )
 
 func init() {
-
 	for i := 0; i < NumToGen; i++ {
 		myfiles = append(myfiles, GenRandomFile())
 		//fmt.Println(GenRandomFile())
@@ -23,7 +22,6 @@ func init() {
 }
 
 func BenchmarkFind(b *testing.B) {
-
 	Filter(myfiles, func(v metafile) bool {
 		if strings.Contains(v.Name, "pdf") {
 			//fmt.Println(v.Name)

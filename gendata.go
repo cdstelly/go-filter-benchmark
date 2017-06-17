@@ -4,6 +4,7 @@ import "fmt"
 import "math/rand"
 import "time"
 import "strconv"
+import "strings"
 
 var (
 	myfiles []metafile
@@ -90,11 +91,58 @@ func Map(list []metafile, f func(metafile) metafile) []metafile {
 }
 
 func main() {
-	numToGen := 100
+	numToGen := 1000000
 	for i := 0; i < numToGen; i++ {
 		myfiles = append(myfiles, GenRandomFile())
 		//fmt.Println(GenRandomFile())
 	}
 	fmt.Println("Generated " + strconv.Itoa(numToGen) + " files.")
+
+	//Filter for pdfs
+	start := time.Now()
+	Filter(myfiles, func(v metafile) bool {
+		if strings.Contains(v.Name, "pdf") {
+			//fmt.Println(v.Name)
+			return true
+		}
+		return false
+	})
+	elapsed := time.Since(start)
+	fmt.Printf("Filter took\t%s, %f files/ms\n", elapsed, float64(numToGen)/float64(elapsed.Nanoseconds())*1000000)
+
+	//Do any match xls?
+	start = time.Now()
+	Any(myfiles, func(v metafile) bool {
+		if strings.HasSuffix(v.Name, "xls") {
+			//fmt.Println(v.Name)
+			return true
+		}
+		return false
+	})
+	elapsed = time.Since(start)
+	fmt.Printf("Any took %s, %f files/ms\n", elapsed, float64(numToGen)/float64(elapsed.Nanoseconds())*1000000)
+
+	//Are they all .txt?
+	start = time.Now()
+	All(myfiles, func(v metafile) bool {
+		if strings.HasSuffix(v.Name, "txt") {
+			//fmt.Println(v.Name)
+			return true
+		}
+		return false
+	})
+	elapsed = time.Since(start)
+	fmt.Printf("All took %s, %f files/ms\n", elapsed, float64(numToGen)/float64(elapsed.Nanoseconds())*1000000)
+
+	//Apply .bk to each filename
+	start = time.Now()
+	Map(myfiles, func(old metafile) metafile {
+		new := old
+		new.EditTime = time.Now()
+		new.Name += ".bk"
+		return new
+	})
+	elapsed = time.Since(start)
+	fmt.Printf("Map took %s, %f files/ms\n", elapsed, float64(numToGen)/float64(elapsed.Nanoseconds())*1000000)
 
 }

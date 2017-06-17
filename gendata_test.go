@@ -1,28 +1,19 @@
 package main
 
 import (
+	"reflect"
+	"strings"
 	"testing"
 	"time"
 )
-import "strings"
-import "fmt"
-import "strconv"
-import "reflect"
 
-var (
-	NumToGen int = 10000000
-)
-
-func init() {
-
-	for i := 0; i < NumToGen; i++ {
+func BenchmarkFind(b *testing.B) {
+	for i := 0; i < b.N; i++ {
 		myfiles = append(myfiles, GenRandomFile())
 		//fmt.Println(GenRandomFile())
 	}
-	fmt.Println("generated " + strconv.Itoa(len(myfiles)) + " files")
-}
+	b.ResetTimer()
 
-func BenchmarkFind(b *testing.B) {
 	Filter(myfiles, func(v metafile) bool {
 		if strings.Contains(v.Name, "pdf") {
 			//fmt.Println(v.Name)
@@ -33,6 +24,12 @@ func BenchmarkFind(b *testing.B) {
 }
 
 func BenchmarkAny(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		myfiles = append(myfiles, GenRandomFile())
+		//fmt.Println(GenRandomFile())
+	}
+	b.ResetTimer()
+
 	Any(myfiles, func(v metafile) bool {
 		if strings.HasSuffix(v.Name, "xls") {
 			//fmt.Println(v.Name)
@@ -43,6 +40,12 @@ func BenchmarkAny(b *testing.B) {
 }
 
 func BenchmarkAll(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		myfiles = append(myfiles, GenRandomFile())
+		//fmt.Println(GenRandomFile())
+	}
+	b.ResetTimer()
+
 	All(myfiles, func(v metafile) bool {
 		if strings.HasSuffix(v.Name, "txt") {
 			//fmt.Println(v.Name)
@@ -53,6 +56,12 @@ func BenchmarkAll(b *testing.B) {
 }
 
 func BenchmarkMap(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		myfiles = append(myfiles, GenRandomFile())
+		//fmt.Println(GenRandomFile())
+	}
+	b.ResetTimer()
+
 	Map(myfiles, func(old metafile) metafile {
 		new := old
 		new.EditTime = time.Now()

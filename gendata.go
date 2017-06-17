@@ -5,10 +5,17 @@ import "math/rand"
 import "time"
 import "strconv"
 import "strings"
+import "flag"
 
 var (
-	myfiles []metafile
+	myfiles  []metafile
+	numToGen int
 )
+
+func init() {
+	flag.IntVar(&numToGen, "num", 1000000, "Number of files to generate")
+	flag.Parse()
+}
 
 type metafile struct {
 	Name       string
@@ -91,7 +98,6 @@ func Map(list []metafile, f func(metafile) metafile) []metafile {
 }
 
 func main() {
-	numToGen := 1000000
 	for i := 0; i < numToGen; i++ {
 		myfiles = append(myfiles, GenRandomFile())
 		//fmt.Println(GenRandomFile())

@@ -126,7 +126,7 @@ func main() {
 		return false
 	})
 	elapsed = time.Since(start)
-	fmt.Printf("Any took %s, %f files/ms\n", elapsed, float64(numToGen)/float64(elapsed.Nanoseconds())*1000000)
+	//fmt.Printf("Any took %s, %f files/ms\n", elapsed, float64(numToGen)/float64(elapsed.Nanoseconds())*1000000)
 
 	//Are they all .txt?
 	start = time.Now()
@@ -138,7 +138,7 @@ func main() {
 		return false
 	})
 	elapsed = time.Since(start)
-	fmt.Printf("All took %s, %f files/ms\n", elapsed, float64(numToGen)/float64(elapsed.Nanoseconds())*1000000)
+	//fmt.Printf("All took %s, %f files/ms\n", elapsed, float64(numToGen)/float64(elapsed.Nanoseconds())*1000000)
 
 	//Apply .bk to each filename
 	start = time.Now()
@@ -149,6 +149,6 @@ func main() {
 		return new
 	})
 	elapsed = time.Since(start)
-	fmt.Printf("Map took %s, %f files/ms\n", elapsed, float64(numToGen)/float64(elapsed.Nanoseconds())*1000000)
+	fmt.Printf("Map took \t%s, %f files/ms\n", elapsed, float64(numToGen)/float64(elapsed.Nanoseconds())*1000000)
 
 }

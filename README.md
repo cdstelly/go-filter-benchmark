@@ -68,3 +68,64 @@ Results vs scala on an i7 with 16GB RAM:
 
 			Filter took: 169.69788 ms, 58928.25781 files/ms
 			Map took:    7976.54346 ms, 1253.67590 files/ms
+
+
+
+results on 24 physical cores, 256G RAM  
+
+
+	1 million files 
+
+		go
+			Filter took     60.300411ms, 16583.634894 files/ms
+			Map took        274.672488ms, 3640.699537 files/ms
+
+			Filter took     96.926585ms, 10317.086896 files/ms
+			Map took        286.672647ms, 3488.299321 files/ms
+
+			Filter took     91.170182ms, 10968.498451 files/ms
+			Map took        273.915927ms, 3650.755219 files/ms
+
+			Filter took     50.224714ms, 19910.516564 files/ms
+			Map took        191.739631ms, 5215.405885 files/ms
+
+			Filter took     108.574928ms, 9210.229456 files/ms
+			Map took        189.974183ms, 5263.873144 files/ms
+
+		scala
+			Filter took:  54.30776 ms, 18413.57422 files/ms
+			Map took:     1049.86328 ms, 952.50500 files/ms
+
+			Filter took:  71.46753 ms, 13992.36816 files/ms
+			Map took:     93.31990 ms, 10715.82813 files/ms
+
+			Filter took:  5.15910 ms, 13305.10840 files/ms
+			Map took:     1895.46802 ms, 527.57416 files/ms
+
+			Filter took:  76.12512 ms, 13136.26758 files/ms
+			Map took:     93.26137 ms, 10722.55371 files/ms
+
+			Elapsed time: 78.35020 ms, 12763.20898 files/ms
+			Map took:     98.85263 ms, 10116.06836 files/ms
+
+			
+	10 million files
+		go	
+			Filter took     504.807036ms, 19809.549564 files/ms
+			Map took        2.75167996s, 3634.143558 files/ms
+			
+			Filter took     514.307152ms, 19443.633947 files/ms
+			Map took        2.715162621s, 3683.020650 files/ms
+
+			Filter took     554.459ms, 18035.598665 files/ms
+			Map took        2.600349589s, 3845.636772 files/ms
+
+
+			Filter took     1.531389489s, 6530.017394 files/ms  (yikes)
+			Map took        2.787230807s, 3587.790424 files/ms
+
+			Filter took     544.849088ms, 18353.706045 files/ms
+			Map took        2.843270805s, 3517.076172 files/ms
+
+		scala
+			out of memory error? 

@@ -1,4 +1,4 @@
-# go-filter-benchmark
+# go vs scala filter and map 
 
 
 Results vs scala on an i7 with 16GB RAM:

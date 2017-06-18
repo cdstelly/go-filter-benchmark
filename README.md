@@ -128,4 +128,7 @@ results on 24 physical cores, 256G RAM
 			Map took        2.843270805s, 3517.076172 files/ms
 
 		scala
-			out of memory error? 
+			JVM error:
+			[error] (run-main-0) java.lang.OutOfMemoryError: GC overhead limit exceeded
+			java.lang.OutOfMemoryError: GC overhead limit exceeded
+ 

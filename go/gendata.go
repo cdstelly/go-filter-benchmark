@@ -106,13 +106,7 @@ func main() {
 
 	//Filter for pdfs
 	start := time.Now()
-	Filter(myfiles, func(v metafile) bool {
-		if strings.Contains(v.Name, "pdf") {
-			//fmt.Println(v.Name)
-			return true
-		}
-		return false
-	})
+	Filter(myfiles, func(v metafile) bool { return strings.HasSuffix(v.Name, "pdf") })
 	elapsed := time.Since(start)
 	fmt.Printf("Filter took\t%s, %f files/ms\n", elapsed, float64(numToGen)/float64(elapsed.Nanoseconds())*1000000)
 

@@ -1,7 +1,7 @@
 # go vs scala filter and map 
 
 
-Results vs scala on an i7 with 16GB RAM:
+Results of Go vs Scala on an i7 with 16GB RAM:
 
 	1 million files: 
 		go

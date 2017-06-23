@@ -1,5 +1,5 @@
 import com.github.nscala_time.time.Imports._
-import scala.collection.mutable.ListBuffer
+import scala.collection.mutable.ArrayBuffer
 
 object filter {
   val numFiles = 10000000
@@ -36,7 +36,7 @@ object filter {
   }
 
   def main(args: Array[String]): Unit = {
-    var fileList = ListBuffer[metafile]()
+    var fileList = ArrayBuffer[metafile]()
 
     for(_ <- 1 to numFiles) {
       val x = new metafile()

@@ -99,7 +99,7 @@ results on 24 physical cores, 256G RAM
 			Filter took:  71.46753 ms, 13992.36816 files/ms
 			Map took:     93.31990 ms, 10715.82813 files/ms
 
-			Filter took:  5.15910 ms, 13305.10840 files/ms
+			Filter took:  5.15910 ms, 13305.10840 files/ms  (uh huh..)
 			Map took:     1895.46802 ms, 527.57416 files/ms
 
 			Filter took:  76.12512 ms, 13136.26758 files/ms
@@ -128,7 +128,18 @@ results on 24 physical cores, 256G RAM
 			Map took        2.843270805s, 3517.076172 files/ms
 
 		scala
-			JVM error:
-			[error] (run-main-0) java.lang.OutOfMemoryError: GC overhead limit exceeded
-			java.lang.OutOfMemoryError: GC overhead limit exceeded
- 
+			export JAVA_OPTS="-Xmx100G -XX:+UseConcMarkSweepGC"
+			Filter took 	540.90686 ms, 18487.47070 files/ms
+			Map took	3005.81860 ms, 3326.88062 files/ms
+
+			Filter took	489.32852 ms, 20436.16797 files/ms
+			Map took 	2637.66553 ms, 3791.23120 files/ms
+			
+			Filter took	533.40192 ms, 18747.58984 files/ms
+			Map took	2841.33130 ms, 3519.47705 files/ms
+
+			Filter took 	539.87878 ms, 18522.67578 files/ms
+			Map took 	2838.44092 ms, 3523.06079 files/ms
+
+			Filter took	581.10028 ms, 17208.73438 files/ms
+			Map took	2605.25757 ms, 3838.39209 files/ms

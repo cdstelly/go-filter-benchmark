@@ -143,3 +143,5 @@ results on 24 physical cores, 256G RAM
 
 			Filter took	581.10028 ms, 17208.73438 files/ms
 			Map took	2605.25757 ms, 3838.39209 files/ms
+
+![Sili](/scala-vs-go-whiskers.png?raw=true "24 Cores with 256G RAM")
